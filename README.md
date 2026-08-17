@@ -58,11 +58,32 @@ BASE_PATH=/ npm run build
 ## État d'avancement
 
 - [x] Palier 1 — Setup, CSP, squelette d'interface navigable, i18n FR/EN
-- [ ] Palier 2 — Parsers (WhatsApp, Messenger, Instagram) + fixtures + tests
+- [x] Palier 2 — Parsers (WhatsApp, Messenger, Instagram) + fixtures + tests + sélection du fil
 - [ ] Palier 3 — Sélection et équilibrage des messages
 - [ ] Palier 4 — Boucle de jeu
 - [ ] Palier 5 — Vue contexte
 - [ ] Palier 6 — Fusion d'identités, page d'aide, polish
+
+## Formats lus
+
+| Source | Entrée acceptée | Particularités traitées |
+| --- | --- | --- |
+| WhatsApp | ZIP exporté, ou le `.txt` seul | Variantes iOS / Android, dates FR / EN / US, format 12 h, messages multi-lignes, marques de direction Unicode, placeholders média et messages supprimés (FR/EN/NL) |
+| Messenger | Archive « Download your information », JSON | Encodage latin-1/UTF-8 réparé, fichiers `message_N.json` fusionnés, ordre antichronologique rétabli |
+| Instagram | Idem, sous `your_instagram_activity/` | Même pipeline que Messenger |
+
+Deux garde-fous valent d'être connus :
+
+- **Les médias ne sont jamais décompressés.** Le filtrage se fait sur le chemin
+  de chaque entrée *avant* extraction, en flux. Une archive de 50 Mo dont 50 Mo
+  de photos ne fait grimper le tas JS que d'environ 1 Mo.
+- **Les discussions à deux sont écartées** : deviner l'auteur entre deux
+  personnes est un tirage à pile ou face. Si l'archive n'en contient pas
+  d'autres, le jeu le dit explicitement plutôt que de proposer une partie vide.
+
+Les fixtures de test sont des conversations inventées. Celles de Meta sont
+générées par `node tests/fixtures/generate-meta-fixtures.mjs`, qui reproduit
+mécaniquement le bug d'encodage plutôt que de le taper à la main.
 
 ## Stack
 

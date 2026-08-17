@@ -1,0 +1,44 @@
+{
+  "participants": [
+    {
+      "name": "lou.pescheur"
+    },
+    {
+      "name": "marin_b"
+    },
+    {
+      "name": "zo\u00c3\u00a9.k"
+    }
+  ],
+  "messages": [
+    {
+      "sender_name": "zo\u00c3\u00a9.k",
+      "timestamp_ms": 1691010900000,
+      "content": "Franchement le concert d'hier \u00c3\u00a9tait incroyable, je n'avais pas ressenti \u00c3\u00a7a depuis des ann\u00c3\u00a9es et j'ai encore les oreilles qui sifflent ce matin \u00f0\u009f\u008e\u00b6"
+    },
+    {
+      "sender_name": "marin_b",
+      "timestamp_ms": 1691010600000,
+      "share": {
+        "link": "https://example.invalid/post"
+      }
+    },
+    {
+      "sender_name": "lou.pescheur",
+      "timestamp_ms": 1691009880000,
+      "content": "Je suis arriv\u00c3\u00a9e pendant la deuxi\u00c3\u00a8me chanson \u00c3\u00a0 cause du tram, donc je r\u00c3\u00a9clame officiellement un r\u00c3\u00a9sum\u00c3\u00a9 d\u00c3\u00a9taill\u00c3\u00a9 de ce que j'ai rat\u00c3\u00a9."
+    },
+    {
+      "sender_name": "marin_b",
+      "timestamp_ms": 1691009100000,
+      "content": "R\u00c3\u00a9action \u00c3\u00a0 votre message : \u00e2\u009d\u00a4\u00ef\u00b8\u008f"
+    },
+    {
+      "sender_name": "marin_b",
+      "timestamp_ms": 1691008200000,
+      "content": "On recommence le mois prochain, il y a un truc au m\u00c3\u00aame endroit et cette fois je prends les places \u00c3\u00a0 l'avance plut\u00c3\u00b4t que la veille \u00c3\u00a0 minuit."
+    }
+  ],
+  "title": "les m\u00c3\u00a9lomanes",
+  "thread_path": "inbox/lesmelomanes_xyz789"
+}

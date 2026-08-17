@@ -38,17 +38,43 @@ export const en: Record<TranslationKey, string> = {
   'parsing.step.parsing': 'Parsing messages',
   'parsing.step.done': 'Done',
   'parsing.error.unsupported': 'Unrecognised format.',
+  'parsing.error.unsupported.hint':
+    'Drop the ZIP exported from WhatsApp, its .txt file, or a Messenger / Instagram archive in JSON format.',
   'parsing.error.empty': 'No usable conversation found.',
+  'parsing.error.empty.hint':
+    'The archive was read fine, but holds no text messages. If it came from Meta, check that you requested JSON rather than HTML.',
+  'parsing.error.no-group': 'No group chat in this archive.',
+  'parsing.error.no-group.hint':
+    'The game needs at least three people writing: with two, guessing the author is a coin flip. One-to-one chats are not supported yet.',
   'parsing.error.corrupt': 'This archive looks unreadable.',
+  'parsing.error.corrupt.hint': 'The file may be incomplete. Download it again and retry.',
   'parsing.error.unknown': 'Something went wrong while reading the file.',
+  'parsing.error.unknown.hint': 'Nothing was sent anywhere — feel free to retry.',
   'parsing.retry': 'Try another file',
+
+  'archive.large.title': 'Large archive',
+  'archive.large.description':
+    'This file is {size}. You can read all of it, or keep only the most recent messages — that is faster and uses far less memory.',
+  'archive.large.limited': 'Keep the last {count} messages per conversation',
+  'archive.large.limitedHint': 'More than enough to play.',
+  'archive.large.full': 'Read everything',
+  'archive.large.fullHint': 'May be slow or run out of memory on a phone.',
+  'archive.large.recommended': 'Recommended',
 
   'threads.title': 'Pick a conversation',
   'threads.subtitle': 'Busy group chats make the best games.',
-  'threads.messageCount': '{count} messages',
-  'threads.participantCount': '{count} participants',
+  'threads.messageCount.one': '{count} message',
+  'threads.messageCount.other': '{count} messages',
+  'threads.participantCount.one': '{count} participant',
+  'threads.participantCount.other': '{count} participants',
   'threads.search': 'Filter by name',
   'threads.empty': 'No conversation matches.',
+  'threads.play': 'Play',
+  'threads.hiddenOneToOne.one':
+    'One one-to-one chat was left out: the game needs at least three participants.',
+  'threads.hiddenOneToOne.other':
+    '{count} one-to-one chats were left out: the game needs at least three participants.',
+  'threads.truncated': 'Limited to the {count} most recent messages.',
 
   'identities.title': 'Who is who?',
   'identities.subtitle':

@@ -2,7 +2,9 @@
   import LanguageSwitch from './components/LanguageSwitch.svelte'
   import Placeholder from './components/Placeholder.svelte'
   import Home from './screens/Home.svelte'
+  import ArchiveSize from './screens/ArchiveSize.svelte'
   import Parsing from './screens/Parsing.svelte'
+  import ThreadPicker from './screens/ThreadPicker.svelte'
   import Help from './screens/Help.svelte'
   import { app } from './lib/appState.svelte'
   import { t } from './lib/i18n/index.svelte'
@@ -23,10 +25,12 @@
   <main class="flex-1">
     {#if app.screen === 'home'}
       <Home />
+    {:else if app.screen === 'archive-size'}
+      <ArchiveSize />
     {:else if app.screen === 'parsing'}
       <Parsing />
     {:else if app.screen === 'threads'}
-      <Placeholder title={t('threads.title')} subtitle={t('threads.subtitle')} step={3} />
+      <ThreadPicker />
     {:else if app.screen === 'identities'}
       <Placeholder title={t('identities.title')} subtitle={t('identities.subtitle')} step={4} />
     {:else if app.screen === 'game'}

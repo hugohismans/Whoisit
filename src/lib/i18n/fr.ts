@@ -40,17 +40,44 @@ export const fr = {
   'parsing.step.parsing': 'Analyse des messages',
   'parsing.step.done': 'Terminé',
   'parsing.error.unsupported': 'Format non reconnu.',
+  'parsing.error.unsupported.hint':
+    'Déposez le ZIP exporté depuis WhatsApp, son fichier .txt, ou une archive Messenger / Instagram au format JSON.',
   'parsing.error.empty': 'Aucune conversation exploitable trouvée.',
+  'parsing.error.empty.hint':
+    'L’archive a bien été lue, mais elle ne contient aucun message texte. Si elle vient de Meta, vérifiez qu’elle a été demandée au format JSON et non HTML.',
+  'parsing.error.no-group': 'Aucune conversation de groupe dans cette archive.',
+  'parsing.error.no-group.hint':
+    'Le jeu a besoin d’au moins trois personnes qui écrivent : à deux, deviner l’auteur revient à tirer à pile ou face. Les discussions à deux ne sont pas encore prises en charge.',
   'parsing.error.corrupt': 'L’archive semble illisible.',
+  'parsing.error.corrupt.hint':
+    'Le fichier est peut-être incomplet. Retéléchargez-le et réessayez.',
   'parsing.error.unknown': 'Une erreur est survenue pendant la lecture.',
+  'parsing.error.unknown.hint': 'Rien n’a été envoyé nulle part — vous pouvez réessayer.',
   'parsing.retry': 'Réessayer avec un autre fichier',
+
+  'archive.large.title': 'Archive volumineuse',
+  'archive.large.description':
+    'Ce fichier pèse {size}. Vous pouvez le lire en entier, ou vous limiter aux messages les plus récents — c’est plus rapide et cela consomme beaucoup moins de mémoire.',
+  'archive.large.limited': 'Garder les {count} derniers messages par conversation',
+  'archive.large.limitedHint': 'Largement suffisant pour jouer.',
+  'archive.large.full': 'Tout lire',
+  'archive.large.fullHint': 'Peut ralentir ou saturer la mémoire sur mobile.',
+  'archive.large.recommended': 'Recommandé',
 
   'threads.title': 'Choisissez une conversation',
   'threads.subtitle': 'Les conversations de groupe les plus actives donnent les meilleures parties.',
-  'threads.messageCount': '{count} messages',
-  'threads.participantCount': '{count} participants',
+  'threads.messageCount.one': '{count} message',
+  'threads.messageCount.other': '{count} messages',
+  'threads.participantCount.one': '{count} participant',
+  'threads.participantCount.other': '{count} participants',
   'threads.search': 'Filtrer par nom',
   'threads.empty': 'Aucune conversation ne correspond.',
+  'threads.play': 'Jouer',
+  'threads.hiddenOneToOne.one':
+    'Une discussion à deux a été écartée : le jeu a besoin d’au moins trois participants.',
+  'threads.hiddenOneToOne.other':
+    '{count} discussions à deux ont été écartées : le jeu a besoin d’au moins trois participants.',
+  'threads.truncated': 'Limitée aux {count} messages les plus récents.',
 
   'identities.title': 'Qui est qui ?',
   'identities.subtitle':

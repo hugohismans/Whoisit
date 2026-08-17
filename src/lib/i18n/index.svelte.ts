@@ -47,4 +47,37 @@ export function t(key: TranslationKey, vars?: Record<string, string | number>): 
   )
 }
 
+const pluralRules = new Map<Locale, Intl.PluralRules>()
+
+function rulesFor(target: Locale): Intl.PluralRules {
+  let rules = pluralRules.get(target)
+  if (!rules) {
+    rules = new Intl.PluralRules(target)
+    pluralRules.set(target, rules)
+  }
+  return rules
+}
+
+/**
+ * Traduit une clé accordée en nombre.
+ *
+ * `base` désigne une famille de clés suffixées par catégorie de pluriel
+ * (`.one`, `.other`, …). On s'appuie sur `Intl.PluralRules` plutôt que sur un
+ * `count > 1 ?` maison : les catégories diffèrent d'une langue à l'autre, et le
+ * français lui-même accorde « 0 » au singulier là où l'anglais met un pluriel.
+ *
+ * `vars.count` peut être passé pour afficher un nombre formaté ; c'est toujours
+ * `count` qui décide de l'accord.
+ */
+export function tCount(
+  base: string,
+  count: number,
+  vars?: Record<string, string | number>,
+): string {
+  const category = rulesFor(current).select(count)
+  const candidate = `${base}.${category}` as TranslationKey
+  const key = candidate in dictionaries[current] ? candidate : (`${base}.other` as TranslationKey)
+  return t(key, { count, ...vars })
+}
+
 export type { TranslationKey }

@@ -4,19 +4,7 @@
   import { app } from '../lib/appState.svelte'
   import { t } from '../lib/i18n/index.svelte'
 
-  /**
-   * Palier 1 : on accepte le fichier et on bascule sur l'écran de lecture.
-   * Le pipeline de parsing (worker + parsers) arrive au palier 2.
-   */
-  function handleFile(file: File) {
-    app.pendingFile = file
-    app.goto('parsing')
-  }
-
-  function startDemo() {
-    app.pendingFile = null
-    app.goto('parsing')
-  }
+  const handleFile = (file: File) => app.submitFile(file)
 </script>
 
 <div class="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-10 sm:py-14">
@@ -28,7 +16,7 @@
   <DropZone onfile={handleFile} />
 
   <div class="flex flex-wrap items-center justify-center gap-3">
-    <button type="button" class="btn btn-ghost" onclick={startDemo}>
+    <button type="button" class="btn btn-ghost" onclick={() => app.startDemo()}>
       {t('home.demo')}
     </button>
     <button type="button" class="btn btn-ghost" onclick={() => app.goto('help')}>

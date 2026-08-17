@@ -31,8 +31,25 @@ export type ParseProgress = {
   detail?: string
 }
 
-/** Erreurs de parsing renvoyées au thread principal. */
+/**
+ * Causes d'échec de lecture. Chacune correspond à un message d'aide distinct :
+ * dire « aucune conversation de groupe » plutôt que « erreur » évite à
+ * l'utilisateur de croire que son archive est cassée.
+ */
+export type ParseErrorCode =
+  /** Format non reconnu, ou archive sans fichier de conversation. */
+  | 'unsupported'
+  /** Archive lisible mais sans aucun message exploitable. */
+  | 'empty'
+  /** Uniquement des conversations à deux — injouables en l'état. */
+  | 'no-group'
+  /** Archive illisible ou tronquée. */
+  | 'corrupt'
+  | 'unknown'
+
+/** Erreur de parsing renvoyée au thread principal. */
 export type ParseError = {
-  code: 'unsupported' | 'empty' | 'corrupt' | 'unknown'
-  message: string
+  code: ParseErrorCode
+  /** Détail technique éventuel, pour la console — jamais affiché tel quel. */
+  detail?: string
 }
