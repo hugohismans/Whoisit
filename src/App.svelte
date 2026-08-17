@@ -5,6 +5,8 @@
   import ArchiveSize from './screens/ArchiveSize.svelte'
   import Parsing from './screens/Parsing.svelte'
   import ThreadPicker from './screens/ThreadPicker.svelte'
+  import Game from './screens/Game.svelte'
+  import GameOver from './screens/GameOver.svelte'
   import Help from './screens/Help.svelte'
   import { app } from './lib/appState.svelte'
   import { t } from './lib/i18n/index.svelte'
@@ -34,9 +36,9 @@
     {:else if app.screen === 'identities'}
       <Placeholder title={t('identities.title')} subtitle={t('identities.subtitle')} step={4} />
     {:else if app.screen === 'game'}
-      <Placeholder title={t('game.question')} subtitle={t('app.tagline')} step={5} />
+      <Game />
     {:else if app.screen === 'gameover'}
-      <Placeholder title={t('gameover.title')} subtitle={t('gameover.missed')} step={6} />
+      <GameOver />
     {:else if app.screen === 'help'}
       <Help />
     {/if}

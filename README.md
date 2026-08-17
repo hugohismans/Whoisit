@@ -60,7 +60,7 @@ BASE_PATH=/ npm run build
 - [x] Palier 1 — Setup, CSP, squelette d'interface navigable, i18n FR/EN
 - [x] Palier 2 — Parsers (WhatsApp, Messenger, Instagram) + fixtures + tests + sélection du fil
 - [x] Palier 3 — Sélection et équilibrage des messages
-- [ ] Palier 4 — Boucle de jeu
+- [x] Palier 4 — Boucle de jeu (3 vies, série, record, difficulté progressive)
 - [ ] Palier 5 — Vue contexte
 - [ ] Palier 6 — Fusion d'identités, page d'aide, polish
 

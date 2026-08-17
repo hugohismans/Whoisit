@@ -91,6 +91,26 @@ export const en: Record<TranslationKey, string> = {
   'game.showContext': 'See the context',
   'game.next': 'Next message',
   'game.quit': 'Quit game',
+  'game.livesLeft.one': '{count} life',
+  'game.livesLeft.other': '{count} lives',
+  'game.yourAnswer': 'Your answer',
+  'game.rightAnswer': 'The right answer',
+  'game.keyboardHint': 'Keys 1 to {max} to answer, Enter to continue.',
+  'game.unplayable': 'This conversation cannot be played.',
+  'game.unplayable.hint':
+    'It needs at least three people writing reasonably long messages. Try a busier conversation.',
+  'game.progress': '{correct} correct out of {total}',
+
+  'gameover.ending.no-lives': 'You are out of lives.',
+  'gameover.ending.quit': 'Game stopped.',
+  'gameover.ending.exhausted':
+    'You have been through every playable message in this conversation. Well done.',
+  'gameover.score': '{correct} correct out of {total}',
+  'gameover.missedEmpty': 'Not a single mistake. Impressive.',
+  'gameover.youSaid': 'You said {answer}',
+  'gameover.copyScore': 'Copy my score',
+  'gameover.copied': 'Copied',
+  'gameover.shareText': 'Who said that? — streak of {streak}, {correct} correct out of {total}.',
 
   'context.title': 'Around this message',
   'context.subtitle': 'The message you guessed is highlighted.',

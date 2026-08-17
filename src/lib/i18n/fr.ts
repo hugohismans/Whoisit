@@ -94,6 +94,26 @@ export const fr = {
   'game.showContext': 'Voir le contexte',
   'game.next': 'Message suivant',
   'game.quit': 'Quitter la partie',
+  'game.livesLeft.one': '{count} vie',
+  'game.livesLeft.other': '{count} vies',
+  'game.yourAnswer': 'Votre réponse',
+  'game.rightAnswer': 'La bonne réponse',
+  'game.keyboardHint': 'Touches 1 à {max} pour répondre, Entrée pour continuer.',
+  'game.unplayable': 'Cette conversation ne permet pas de jouer.',
+  'game.unplayable.hint':
+    'Il faut au moins trois personnes qui écrivent des messages un peu longs. Essayez une conversation plus fournie.',
+  'game.progress': '{correct} bonnes réponses sur {total}',
+
+  'gameover.ending.no-lives': 'Vous n’avez plus de vies.',
+  'gameover.ending.quit': 'Partie interrompue.',
+  'gameover.ending.exhausted':
+    'Vous avez fait le tour des messages jouables de cette conversation. Beau parcours.',
+  'gameover.score': '{correct} bonnes réponses sur {total}',
+  'gameover.missedEmpty': 'Aucune erreur. Impressionnant.',
+  'gameover.youSaid': 'Vous avez dit {answer}',
+  'gameover.copyScore': 'Copier mon score',
+  'gameover.copied': 'Copié',
+  'gameover.shareText': 'Qui a dit ça ? — série de {streak}, {correct} bonnes réponses sur {total}.',
 
   'context.title': 'Autour de ce message',
   'context.subtitle': 'Le message deviné est mis en évidence.',

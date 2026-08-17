@@ -2,6 +2,7 @@ import type { Conversation, ParseError, ParseProgress } from './types'
 import type { ParseOptions } from './parsing'
 import { parseInWorker, type ParseHandle } from './worker/client'
 import { buildDemoConversation } from './demo/demoConversation'
+import { Game } from './game/engine.svelte'
 
 export type Screen =
   | 'home'
@@ -41,6 +42,9 @@ class AppState {
   skippedOneToOne = $state(0)
   /** Plafond appliqué au parsing en cours, pour pouvoir le signaler à l'écran. */
   messageCap = $state<number | undefined>(undefined)
+
+  /** Partie en cours. `null` si la conversation choisie n'est pas jouable. */
+  game = $state<Game | null>(null)
 
   progress = $state<ParseProgress>({ ratio: 0, stepKey: 'parsing.step.reading' })
   error = $state<ParseError | null>(null)
@@ -117,7 +121,43 @@ class AppState {
 
   select(conversation: Conversation): void {
     this.selected = conversation
-    this.goto('identities')
+    this.startGame()
+  }
+
+  /** Démarre — ou redémarre — une partie sur la conversation sélectionnée. */
+  startGame(): void {
+    if (!this.selected) return
+    this.game = Game.create(this.selected)
+    this.goto('game')
+  }
+
+  replay(): void {
+    this.startGame()
+  }
+
+  /** Passe au tour suivant, en basculant sur l'écran de fin le cas échéant. */
+  nextRound(): void {
+    this.game?.next()
+    if (this.game?.over) this.goto('gameover')
+  }
+
+  /** Abandon volontaire : la partie compte quand même, et le dit. */
+  endGame(): void {
+    if (!this.game) return
+    this.game.ending ??= 'quit'
+    this.goto('gameover')
+  }
+
+  backToThreads(): void {
+    // Une seule conversation en mémoire : il n'y a rien à re-choisir, on
+    // retourne à l'accueil et on relâche tout au passage.
+    if (this.conversations.length <= 1) {
+      this.reset()
+      return
+    }
+    this.game = null
+    this.selected = null
+    this.goto('threads')
   }
 
   cancelParsing(): void {
@@ -128,6 +168,7 @@ class AppState {
   /** Retour à l'accueil : on relâche explicitement toutes les données lues. */
   reset(): void {
     this.cancelParsing()
+    this.game = null
     this.pendingFile = null
     this.conversations = []
     this.selected = null
