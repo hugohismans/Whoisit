@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--
+      ─────────────────────────────────────────────────────────────────────────
+      GARANTIE DE VIE PRIVÉE, APPLIQUÉE PAR LE NAVIGATEUR
+      ─────────────────────────────────────────────────────────────────────────
+      connect-src 'none'  → aucun fetch / XHR / WebSocket / beacon possible.
+                            Même un bug ou une dépendance malveillante ne peut
+                            pas faire sortir vos conversations de l'appareil.
+      default-src 'self'  → tout le code et les styles viennent de ce site.
+      img-src … blob:     → aperçus générés localement uniquement.
+      worker-src 'self'   → le parseur tourne dans un worker servi par le site.
+      form-action 'none'  → aucun formulaire ne peut poster où que ce soit.
+
+      Cette ligne est vérifiable : ouvrez le code source de la page.
+      (En `npm run dev`, un plugin Vite élargit connect-src au websocket HMR
+       local — le build de production ne l'est jamais.)
+
+      `frame-ancestors` n'est volontairement pas listé : le navigateur l'ignore
+      dans une balise <meta>. Il doit être posé en en-tête HTTP par l'hébergeur.
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; connect-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'"
+    />
+
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="robots" content="noindex" />
+    <meta
+      name="description"
+      content="Devinez qui a écrit quoi dans vos conversations de groupe. Tout se passe dans votre navigateur, rien n'est envoyé nulle part."
+    />
+    <meta name="color-scheme" content="dark light" />
+    <title>Qui a dit ça ?</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

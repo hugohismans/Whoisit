@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.vite/
+*.local
+.DS_Store
+
+# Filet de sécurité : aucune vraie conversation ne doit jamais être commitée.
+# Les fixtures de test sont inventées et vivent dans tests/fixtures/.
+/private/
+*.whatsapp.txt
