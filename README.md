@@ -59,7 +59,7 @@ BASE_PATH=/ npm run build
 
 - [x] Palier 1 — Setup, CSP, squelette d'interface navigable, i18n FR/EN
 - [x] Palier 2 — Parsers (WhatsApp, Messenger, Instagram) + fixtures + tests + sélection du fil
-- [ ] Palier 3 — Sélection et équilibrage des messages
+- [x] Palier 3 — Sélection et équilibrage des messages
 - [ ] Palier 4 — Boucle de jeu
 - [ ] Palier 5 — Vue contexte
 - [ ] Palier 6 — Fusion d'identités, page d'aide, polish
@@ -84,6 +84,37 @@ Deux garde-fous valent d'être connus :
 Les fixtures de test sont des conversations inventées. Celles de Meta sont
 générées par `node tests/fixtures/generate-meta-fixtures.mjs`, qui reproduit
 mécaniquement le bug d'encodage plutôt que de le taper à la main.
+
+## Équilibrage
+
+Dans un groupe, deux personnes écrivent souvent 70 % des messages. Tirer un
+message au hasard ferait de « répondre le plus bavard » une stratégie gagnante.
+Le jeu tire donc **un auteur uniformément, puis un de ses messages**.
+
+`npm run analyze` inspecte le vivier d'une conversation et compare la part de
+chacun dans les messages écrits à sa part dans les questions posées :
+
+```
+   auteur                  écrit    jouables   questions posées
+   Sonia                   36.0%       13    33.0%  █████████
+   Malik                   33.0%       12    33.7%  █████████
+   Elise                   15.0%        9    33.3%  █████████
+```
+
+Deux règles complètent le tirage :
+
+- **Toutes les propositions affichées peuvent être la bonne réponse.** Proposer
+  comme distracteur quelqu'un qui n'a jamais écrit de message assez long serait
+  exploitable : un joueur régulier apprendrait à l'éliminer d'office, et une
+  question à cinq propositions en vaudrait trois.
+- **Le seuil d'éligibilité s'assouplit** quand la conversation est petite, plutôt
+  que de refuser la partie.
+
+```bash
+npm run analyze                       # conversation de démo
+npm run analyze -- export.txt         # un export WhatsApp
+npm run analyze -- archive.zip        # une archive Meta ou WhatsApp
+```
 
 ## Stack
 
