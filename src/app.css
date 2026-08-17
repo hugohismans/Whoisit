@@ -1,0 +1,131 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Design tokens. Tout est local : aucune police distante, aucun CDN.
+   On s'appuie sur la pile système pour rester à zéro requête externe.
+   --------------------------------------------------------------------------- */
+@theme {
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+
+  /* Fond profond, légèrement bleuté — l'ambiance « appli de messagerie la nuit ». */
+  --color-ink-950: oklch(0.17 0.02 265);
+  --color-ink-900: oklch(0.21 0.022 265);
+  --color-ink-850: oklch(0.25 0.024 265);
+  --color-ink-800: oklch(0.3 0.026 265);
+  --color-ink-700: oklch(0.4 0.028 265);
+  --color-ink-500: oklch(0.6 0.02 265);
+  --color-ink-300: oklch(0.78 0.015 265);
+  --color-ink-100: oklch(0.93 0.008 265);
+
+  /* Accent principal : vert-menthe des bulles de chat. */
+  --color-mint-400: oklch(0.82 0.15 165);
+  --color-mint-500: oklch(0.74 0.16 165);
+  --color-mint-600: oklch(0.63 0.15 165);
+
+  /* Accent secondaire, pour la nostalgie / les mises en avant. */
+  --color-amber-glow: oklch(0.83 0.15 80);
+
+  --color-danger: oklch(0.68 0.19 20);
+  --color-success: oklch(0.76 0.17 150);
+
+  --radius-bubble: 1.25rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------- */
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      color-mix(in oklab, var(--color-mint-600) 14%, transparent),
+      transparent 70%
+    ),
+    var(--color-ink-950);
+  color: var(--color-ink-100);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Focus visible cohérent partout, pour l'accessibilité clavier. */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-mint-400);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Utilitaires composés réutilisés par les écrans
+   --------------------------------------------------------------------------- */
+@utility card {
+  border-radius: 1rem;
+  border: 1px solid --alpha(var(--color-ink-700) / 60%);
+  background: --alpha(var(--color-ink-900) / 70%);
+  backdrop-filter: blur(8px);
+}
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  padding: 0.625rem 1.125rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    transform 100ms ease;
+  cursor: pointer;
+}
+
+@utility btn-primary {
+  background: var(--color-mint-500);
+  color: var(--color-ink-950);
+  &:hover {
+    background: var(--color-mint-400);
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+@utility btn-ghost {
+  border: 1px solid --alpha(var(--color-ink-700) / 80%);
+  color: var(--color-ink-300);
+  &:hover {
+    background: --alpha(var(--color-ink-850) / 80%);
+    color: var(--color-ink-100);
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "participants": [
+    {
+      "name": "Am\u00c3\u00a9lie Rousseau"
+    },
+    {
+      "name": "Th\u00c3\u00a9o Nguyen"
+    },
+    {
+      "name": "In\u00c3\u00a8s Ferreira"
+    }
+  ],
+  "messages": [
+    {
+      "sender_name": "Th\u00c3\u00a9o Nguyen",
+      "timestamp_ms": 1686823920000,
+      "content": "Je peux emprunter la camionnette de mon oncle le samedi matin, mais il faut la rendre avant 14h sinon il en a besoin pour le march\u00c3\u00a9 \u00f0\u009f\u009a\u009a"
+    },
+    {
+      "sender_name": "Am\u00c3\u00a9lie Rousseau",
+      "timestamp_ms": 1686823500000,
+      "content": "Parfait. Dans ce cas on commence \u00c3\u00a0 huit heures, on charge tout d'un coup, et on \u00c3\u00a9vite compl\u00c3\u00a8tement le d\u00c3\u00a9bat sur qui prend l'escalier et qui prend l'ascenseur."
+    },
+    {
+      "sender_name": "In\u00c3\u00a8s Ferreira",
+      "timestamp_ms": 1686823080000,
+      "content": "\u00c3\u0087a marche pour moi \u00f0\u009f\u0091\u008d"
+    },
+    {
+      "sender_name": "Am\u00c3\u00a9lie Rousseau",
+      "timestamp_ms": 1686822600000,
+      "call_duration": 0,
+      "content": "Am\u00c3\u00a9lie Rousseau a d\u00c3\u00a9marr\u00c3\u00a9 un appel."
+    },
+    {
+      "sender_name": "Th\u00c3\u00a9o Nguyen",
+      "timestamp_ms": 1686822300000,
+      "content": "Rappel : le d\u00c3\u00a9m\u00c3\u00a9nagement c'est le 17, pas le 18. Th\u00c3\u00a9o a d\u00c3\u00a9j\u00c3\u00a0 not\u00c3\u00a9 la mauvaise date deux fois, donc je pr\u00c3\u00a9f\u00c3\u00a8re l'\u00c3\u00a9crire noir sur blanc."
+    }
+  ],
+  "title": "Les d\u00c3\u00a9m\u00c3\u00a9nageurs",
+  "thread_path": "inbox/lesdemenageurs_abc123"
+}

@@ -1,0 +1,47 @@
+{
+  "participants": [
+    {
+      "name": "Am\u00c3\u00a9lie Rousseau"
+    },
+    {
+      "name": "Th\u00c3\u00a9o Nguyen"
+    },
+    {
+      "name": "In\u00c3\u00a8s Ferreira"
+    }
+  ],
+  "messages": [
+    {
+      "sender_name": "In\u00c3\u00a8s Ferreira",
+      "timestamp_ms": 1687117320000,
+      "content": "J'ai r\u00c3\u00a9cup\u00c3\u00a9r\u00c3\u00a9 les cl\u00c3\u00a9s ce matin, et franchement l'appartement est beaucoup plus lumineux que sur les photos \u00f0\u009f\u0098\u0080"
+    },
+    {
+      "sender_name": "Th\u00c3\u00a9o Nguyen",
+      "timestamp_ms": 1687117200000,
+      "content": "Th\u00c3\u00a9o Nguyen a envoy\u00c3\u00a9 une pi\u00c3\u00a8ce jointe."
+    },
+    {
+      "sender_name": "Am\u00c3\u00a9lie Rousseau",
+      "timestamp_ms": 1687116900000,
+      "content": "Est-ce que quelqu'un a pens\u00c3\u00a9 \u00c3\u00a0 pr\u00c3\u00a9venir le syndic pour l'ascenseur ? Sinon on va porter le canap\u00c3\u00a9 sur six \u00c3\u00a9tages et je refuse cat\u00c3\u00a9goriquement de participer \u00c3\u00a0 \u00c3\u00a7a."
+    },
+    {
+      "sender_name": "In\u00c3\u00a8s Ferreira",
+      "timestamp_ms": 1687116600000,
+      "photos": [
+        {
+          "uri": "messages/inbox/lesdemenageurs_abc123/photos/photo_1.jpg"
+        }
+      ]
+    },
+    {
+      "sender_name": "Th\u00c3\u00a9o Nguyen",
+      "timestamp_ms": 1687116000000,
+      "content": "Message annul\u00c3\u00a9",
+      "is_unsent": true
+    }
+  ],
+  "title": "Les d\u00c3\u00a9m\u00c3\u00a9nageurs",
+  "thread_path": "inbox/lesdemenageurs_abc123"
+}
