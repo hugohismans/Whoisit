@@ -1,5 +1,6 @@
 import type { Conversation, Message } from '../types'
 import { countWords } from '../parsing/text'
+import { fold } from '../format/fold'
 
 /**
  * Sélection des messages « jouables ».
@@ -68,14 +69,6 @@ export function playabilityIssue(
   if (lines.length > 8) return 'pasted'
 
   return null
-}
-
-/** Minuscules sans accents — pour comparer des noms sans se soucier de la casse. */
-function fold(text: string): string {
-  return text
-    .normalize('NFD')
-    .replace(/\p{Diacritic}/gu, '')
-    .toLowerCase()
 }
 
 /**

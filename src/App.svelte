@@ -1,6 +1,5 @@
 <script lang="ts">
   import LanguageSwitch from './components/LanguageSwitch.svelte'
-  import Placeholder from './components/Placeholder.svelte'
   import Home from './screens/Home.svelte'
   import ArchiveSize from './screens/ArchiveSize.svelte'
   import Parsing from './screens/Parsing.svelte'
@@ -8,6 +7,7 @@
   import Game from './screens/Game.svelte'
   import GameOver from './screens/GameOver.svelte'
   import Help from './screens/Help.svelte'
+  import IdentityMerge from './screens/IdentityMerge.svelte'
   import ContextDialog from './components/ContextDialog.svelte'
   import { app } from './lib/appState.svelte'
   import { t } from './lib/i18n/index.svelte'
@@ -22,7 +22,17 @@
     >
       {t('app.title')}
     </button>
-    <LanguageSwitch />
+    <div class="flex items-center gap-2">
+      <button
+        type="button"
+        class="rounded-lg border border-ink-800 px-2 py-1 text-xs font-semibold text-ink-500 transition-colors hover:text-ink-100"
+        onclick={() => app.goto('help')}
+        title={t('common.help')}
+      >
+        ?
+      </button>
+      <LanguageSwitch />
+    </div>
   </nav>
 
   <main class="flex-1">
@@ -35,7 +45,7 @@
     {:else if app.screen === 'threads'}
       <ThreadPicker />
     {:else if app.screen === 'identities'}
-      <Placeholder title={t('identities.title')} subtitle={t('identities.subtitle')} step={4} />
+      <IdentityMerge />
     {:else if app.screen === 'game'}
       <Game />
     {:else if app.screen === 'gameover'}
@@ -45,9 +55,9 @@
     {/if}
   </main>
 
-  {#if app.contextMessage && app.selected}
+  {#if app.contextMessage && app.playing}
     <ContextDialog
-      conversation={app.selected}
+      conversation={app.playing}
       message={app.contextMessage}
       onclose={() => app.hideContext()}
     />

@@ -2,7 +2,11 @@
   import DropZone from '../components/DropZone.svelte'
   import PrivacyPanel from '../components/PrivacyPanel.svelte'
   import { app } from '../lib/appState.svelte'
-  import { t } from '../lib/i18n/index.svelte'
+  import { t, tCount } from '../lib/i18n/index.svelte'
+  import { readBestStreak } from '../lib/game/storage'
+
+  // Lu une fois à l'affichage : le record ne bouge pas tant qu'on est ici.
+  const record = readBestStreak()
 
   const handleFile = (file: File) => app.submitFile(file)
 </script>
@@ -23,6 +27,10 @@
       {t('common.help')}
     </button>
   </div>
+
+  {#if record > 0}
+    <p class="text-center text-sm text-ink-500">{tCount('home.record', record)}</p>
+  {/if}
 
   <PrivacyPanel />
 </div>

@@ -62,7 +62,7 @@ BASE_PATH=/ npm run build
 - [x] Palier 3 — Sélection et équilibrage des messages
 - [x] Palier 4 — Boucle de jeu (3 vies, série, record, difficulté progressive)
 - [x] Palier 5 — Vue contexte
-- [ ] Palier 6 — Fusion d'identités, page d'aide, polish
+- [x] Palier 6 — Fusion d'identités, page d'aide, polish
 
 ## Formats lus
 
@@ -115,6 +115,24 @@ npm run analyze                       # conversation de démo
 npm run analyze -- export.txt         # un export WhatsApp
 npm run analyze -- archive.zip        # une archive Meta ou WhatsApp
 ```
+
+## Fusion d'identités
+
+Deux situations très courantes rendent une partie injuste : le même contact
+apparaît sous un numéro brut *et* sous son nom parce qu'il a été enregistré
+entre-temps, ou quelqu'un a changé de pseudo Messenger en cours de route. Dans
+les deux cas, on perd une vie pour une raison qui n'a rien à voir avec le style
+d'écriture.
+
+Un écran, sautable, permet de renommer et de regrouper les participants avant la
+partie. Il propose de lui-même les doublons évidents — même nom à la casse et aux
+accents près, ou prénom seul face à prénom + nom.
+
+**Les numéros de téléphone sont masqués partout** (`+33 6 •• •• 56 78`), y
+compris dans les boutons de réponse et la vue contexte : jouer en partageant son
+écran ne doit pas diffuser les numéros de ses amis. Cet écran est le seul endroit
+où l'on peut les révéler, parce que c'est le seul où l'on en a besoin pour
+reconnaître la personne.
 
 ## Stack
 

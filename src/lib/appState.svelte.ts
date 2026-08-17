@@ -3,6 +3,7 @@ import type { ParseOptions } from './parsing'
 import { parseInWorker, type ParseHandle } from './worker/client'
 import { buildDemoConversation } from './demo/demoConversation'
 import { Game } from './game/engine.svelte'
+import { applyIdentities, type IdentityMap } from './identity/merge'
 
 export type Screen =
   | 'home'
@@ -37,7 +38,16 @@ class AppState {
   pendingFile = $state<File | null>(null)
 
   conversations = $state<Conversation[]>([])
+  /** Conversation choisie, telle qu'elle a été lue. */
   selected = $state<Conversation | null>(null)
+  /**
+   * Conversation réellement jouée : la conversation choisie, après fusion des
+   * identités. C'est elle qu'affiche la vue contexte, pour que les noms y
+   * soient cohérents avec ceux des boutons de réponse.
+   */
+  playing = $state<Conversation | null>(null)
+  /** Fusions retenues, pour rejouer la même partie sans repasser par l'écran. */
+  identities = $state<IdentityMap>({})
   /** Discussions à deux écartées lors du dernier parsing. */
   skippedOneToOne = $state(0)
   /** Plafond appliqué au parsing en cours, pour pouvoir le signaler à l'écran. */
@@ -127,13 +137,21 @@ class AppState {
 
   select(conversation: Conversation): void {
     this.selected = conversation
-    this.startGame()
+    this.identities = {}
+    this.playing = null
+    this.goto('identities')
   }
 
-  /** Démarre — ou redémarre — une partie sur la conversation sélectionnée. */
-  startGame(): void {
+  /**
+   * Démarre une partie. La carte d'identités n'est fournie qu'au premier appel,
+   * depuis l'écran de fusion ; « rejouer » réutilise celle déjà retenue.
+   */
+  startGame(identities?: IdentityMap): void {
     if (!this.selected) return
-    this.game = Game.create(this.selected)
+    if (identities) this.identities = identities
+
+    this.playing = applyIdentities(this.selected, this.identities)
+    this.game = Game.create(this.playing)
     this.goto('game')
   }
 
@@ -171,6 +189,8 @@ class AppState {
     }
     this.game = null
     this.selected = null
+    this.playing = null
+    this.identities = {}
     this.goto('threads')
   }
 
@@ -187,6 +207,8 @@ class AppState {
     this.pendingFile = null
     this.conversations = []
     this.selected = null
+    this.playing = null
+    this.identities = {}
     this.skippedOneToOne = 0
     this.messageCap = undefined
     this.error = null
