@@ -1,4 +1,4 @@
-import type { Conversation, ParseError, ParseProgress } from './types'
+import type { Conversation, Message, ParseError, ParseProgress } from './types'
 import type { ParseOptions } from './parsing'
 import { parseInWorker, type ParseHandle } from './worker/client'
 import { buildDemoConversation } from './demo/demoConversation'
@@ -45,6 +45,12 @@ class AppState {
 
   /** Partie en cours. `null` si la conversation choisie n'est pas jouable. */
   game = $state<Game | null>(null)
+
+  /**
+   * Message dont on regarde le contexte. La vue se superpose à l'écran courant
+   * plutôt que de le remplacer : on y jette un œil, on revient.
+   */
+  contextMessage = $state<Message | null>(null)
 
   progress = $state<ParseProgress>({ ratio: 0, stepKey: 'parsing.step.reading' })
   error = $state<ParseError | null>(null)
@@ -148,6 +154,14 @@ class AppState {
     this.goto('gameover')
   }
 
+  showContext(message: Message): void {
+    this.contextMessage = message
+  }
+
+  hideContext(): void {
+    this.contextMessage = null
+  }
+
   backToThreads(): void {
     // Une seule conversation en mémoire : il n'y a rien à re-choisir, on
     // retourne à l'accueil et on relâche tout au passage.
@@ -168,6 +182,7 @@ class AppState {
   /** Retour à l'accueil : on relâche explicitement toutes les données lues. */
   reset(): void {
     this.cancelParsing()
+    this.contextMessage = null
     this.game = null
     this.pendingFile = null
     this.conversations = []

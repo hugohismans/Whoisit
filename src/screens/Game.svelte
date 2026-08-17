@@ -14,6 +14,8 @@
   function onKeyDown(event: KeyboardEvent) {
     if (!game || game.over) return
     if (event.metaKey || event.ctrlKey || event.altKey) return
+    // La vue contexte a ses propres raccourcis (Échap) : on lui laisse la main.
+    if (app.contextMessage) return
 
     if (!game.answered) {
       const index = Number.parseInt(event.key, 10) - 1
@@ -102,7 +104,14 @@
     </div>
 
     {#if game.answered}
-      <div class="flex justify-center">
+      <div class="flex flex-wrap justify-center gap-3">
+        <button
+          type="button"
+          class="btn btn-ghost"
+          onclick={() => app.showContext(game.round!.message)}
+        >
+          {t('game.showContext')}
+        </button>
         <button type="button" class="btn btn-primary" onclick={() => app.nextRound()}>
           {t('game.next')} →
         </button>

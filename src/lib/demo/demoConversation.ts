@@ -65,12 +65,15 @@ const SCRIPT: [author: string, text: string][] = [
 const START = new Date(2024, 4, 14, 20, 12, 0).getTime()
 
 export function buildDemoConversation(): Conversation {
-  const messages: Message[] = SCRIPT.map(([author, text], index) => ({
-    i: index,
-    author,
-    text,
-    ts: START + index * (2 * 60_000 + (index % 3) * 40_000),
-  }))
+  // Les intervalles se cumulent : les multiplier par l'index donnerait des
+  // horodatages non monotones, et la vue contexte afficherait des heures qui
+  // reculent d'un message à l'autre.
+  let stamp = START
+  const messages: Message[] = SCRIPT.map(([author, text], index) => {
+    const message = { i: index, author, text, ts: stamp }
+    stamp += 2 * 60_000 + (index % 3) * 40_000
+    return message
+  })
 
   return {
     source: 'demo',

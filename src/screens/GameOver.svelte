@@ -67,9 +67,24 @@
         <ul class="mt-3 flex flex-col gap-3">
           {#each game.missed as attempt (attempt.message.i)}
             <li>
-              <MessageBubble message={attempt.message} author={attempt.author} compact />
-              <p class="mt-1 pl-1 text-xs text-danger">
-                {t('gameover.youSaid', { answer: displayName(attempt.answer) })}
+              <button
+                type="button"
+                class="block w-full text-left"
+                onclick={() => app.showContext(attempt.message)}
+              >
+                <MessageBubble message={attempt.message} author={attempt.author} compact />
+              </button>
+              <p class="mt-1 flex flex-wrap items-center gap-2 pl-1 text-xs">
+                <span class="text-danger">
+                  {t('gameover.youSaid', { answer: displayName(attempt.answer) })}
+                </span>
+                <button
+                  type="button"
+                  class="text-ink-500 underline hover:text-ink-300"
+                  onclick={() => app.showContext(attempt.message)}
+                >
+                  {t('game.showContext')}
+                </button>
               </p>
             </li>
           {/each}

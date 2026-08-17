@@ -115,6 +115,13 @@ export const en: Record<TranslationKey, string> = {
   'context.title': 'Around this message',
   'context.subtitle': 'The message you guessed is highlighted.',
   'context.back': 'Back to the game',
+  'context.close': 'Close the context',
+  'context.loadMore': 'Show more messages',
+  'context.start': 'Beginning of the conversation',
+  'context.end': 'End of the conversation',
+  'context.guessed': 'The message from the question',
+  'context.today': 'Today',
+  'context.yesterday': 'Yesterday',
 
   'gameover.title': 'Game over',
   'gameover.streak': 'Best streak: {count}',

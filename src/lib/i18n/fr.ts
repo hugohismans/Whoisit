@@ -118,6 +118,13 @@ export const fr = {
   'context.title': 'Autour de ce message',
   'context.subtitle': 'Le message deviné est mis en évidence.',
   'context.back': 'Revenir au jeu',
+  'context.close': 'Fermer le contexte',
+  'context.loadMore': 'Voir plus de messages',
+  'context.start': 'Début de la conversation',
+  'context.end': 'Fin de la conversation',
+  'context.guessed': 'Le message de la question',
+  'context.today': 'Aujourd’hui',
+  'context.yesterday': 'Hier',
 
   'gameover.title': 'Partie terminée',
   'gameover.streak': 'Meilleure série : {count}',

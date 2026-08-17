@@ -8,6 +8,7 @@
   import Game from './screens/Game.svelte'
   import GameOver from './screens/GameOver.svelte'
   import Help from './screens/Help.svelte'
+  import ContextDialog from './components/ContextDialog.svelte'
   import { app } from './lib/appState.svelte'
   import { t } from './lib/i18n/index.svelte'
 </script>
@@ -43,6 +44,14 @@
       <Help />
     {/if}
   </main>
+
+  {#if app.contextMessage && app.selected}
+    <ContextDialog
+      conversation={app.selected}
+      message={app.contextMessage}
+      onclose={() => app.hideContext()}
+    />
+  {/if}
 
   <footer class="px-4 py-6 text-center text-xs text-ink-500">
     {t('home.privacy.ephemeral')}
